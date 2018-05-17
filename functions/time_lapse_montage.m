@@ -32,3 +32,5 @@ num_rows = 2;
 num_cols = num_frames/num_rows;
 
 montage_img =montage(frame, 'Size', [num_rows num_cols]);
+
+imwrite(montage_img, strcat(path,'montage_img.jpg'));
