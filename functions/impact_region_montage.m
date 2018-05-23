@@ -1,4 +1,6 @@
 %% Functions - Impact Region Montage
+% This script will create a montage of the impact region images for a
+% sample
 
 function impact_region_montage(image_type,videofolders,location)
 
