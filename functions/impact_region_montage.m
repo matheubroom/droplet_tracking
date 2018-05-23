@@ -1,3 +1,5 @@
+%% Functions - Impact Region Montage
+
 function impact_region_montage(image_type,videofolders,location)
 
     for i =1:length(videofolders)
@@ -8,23 +10,26 @@ function impact_region_montage(image_type,videofolders,location)
                 save_name = 'impact_region_montage.jpg';
             case 'max'
                 temp = imread('max_spread.jpg');
+                [x, y ,~] = size(temp);      
+
+                if x < 601
+                     delta_p = 601 - x;
+                     pad_1 = round(delta_p/2);
+                     pad_2 = delta_p - pad_1;
+                     temp = padarray(temp,[pad_1 0],0, 'pre');
+                     temp = padarray(temp,[pad_2 0],0,'post');
+                end
+                if y < 601
+                    delta_p = 601 - y;
+                    temp = padarray(temp,[0 delta_p/2],0);
+                end
                 save_name = 'max_spread_montage.jpg';
             case 'bubble'
                 temp = imread('bubbles.jpg');
                 save_name = 'bubbles_montage.jpg';
         end
         
-        [x y z] = size(temp);
         
- 
-        if x < 601
-             delta_p = 601 - x;
-             temp = padarray(temp,[delta_p/2 0],0);
-        end
-        if y < 601
-            delta_p = 601 - y;
-            temp = padarray(temp,[0 delta_p/2],0);
-        end
         
         image_stack(:,:,:,i) = temp;
     end
