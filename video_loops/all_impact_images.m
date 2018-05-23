@@ -1,4 +1,4 @@
-load('F:\Archive\Matheu\samples_database.mat');
+oad('F:\Archive\Matheu\samples_database.mat');
 
 folders = samples_database.folder_location;
 for i = 1:33
